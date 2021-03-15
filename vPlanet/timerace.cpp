@@ -26,17 +26,20 @@ int	main()
 	it = v.begin();
 	it2 = v.end() - 1;
 	if ((*it == t1 && *it2 == t2) || (*it == t2 && *it2 == t1))
-		res = "YES";
-	if ((t1 == ds || t1 == dm || t1 == dh || t2 == ds || t2 == dm || t2 == dh) && t1 > t2)
-		res = "NO";
+	{
+		if (*--it2 == t1) res = "NO";
+		else res = "YES";
+	}
 	for (it = v.begin(); it != v.end(); it++)
 	{
 		it2 = it + 1;
 		if ((*it == t1 && *it2 == t2) || (*it == t2 && *it2 == t1))
 		{
-			res = "YES";
+			if (*--it == t1) res = "NO";
+			else res = "YES";
+			break ;
 		}
-		cout << *it << "\n";
+		//cout << *it << "\n";
 	}
 	cout << res << "\n";
 }
