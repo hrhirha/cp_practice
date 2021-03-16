@@ -35,9 +35,9 @@ int	main()
 		it2 = it + 1;
 		if ((*it == t1 && *it2 == t2) || (*it == t2 && *it2 == t1))
 		{
-			if (*--it == t1) res = "NO";
+			if (*--it == t1 || *it == t2) res = "NO";
 			else res = "YES";
-			break ;
+			*++it;
 		}
 		//cout << *it << "\n";
 	}
