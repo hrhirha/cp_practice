@@ -1,29 +1,24 @@
 #include <iostream>
-#include <fstream>
+
 using namespace std;
 
 int	main()
 {
 	int a, b, c, d;
+	int x, y;
+	int res;
 
-	//freopen("paint.in", "r", stdin);
-	//freopen("paint.out", "w", stdout);
 	cin >> a >> b;
 	cin >> c >> d;
-	if (a > c)
+	res = b - a + d - c;
+	if (a > b || c > b)
 	{
-		if (a > d)
-			cout << b - a + d - c << "\n";
-		else
-			cout << b - c << "\n";
+		cout << res << "\n";
+		return (0);
 	}
-	else
-	{
-		if (c > b)
-			cout << b - a + d - c << "\n";
-		else
-			cout << d - a << "\n";
-	}
+	x = max(a, c);
+	y = min(b, d);
+	cout << res - (y - x) << "\n";
 }
 
 // Solution
