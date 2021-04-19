@@ -4,28 +4,34 @@ using namespace std;
 
 int	main(void)
 {
-	int b1x1, b1y1, b1x2, b1y2;
-	int b2x1, b2y1, b2x2, b2y2;
+	int ax1, ay1, ax2, ay2;
+	int bx1, by1, bx2, by2;
 	int	tx1, ty1, tx2, ty2;
 	int x1, y1, x2,y2;
 	int	area1,area2;
 
-	cin >> b1x1 >> b1y1 >> b1x2 >> b1y2;
-	cin >> b2x1 >> b2y1 >> b2x2 >> b2y2;
+	cin >> ax1 >> ay1 >> ax2 >> ay2;
+	cin >> bx1 >> by1 >> bx2 >> by2;
 	cin >> tx1 >> ty1 >> tx2 >> ty2;
-	area1 = (b1x2 - b1x1) * (b1y2 - b1y1);
-	area2 = (b2x2 - b2x1) * (b2y2 - b2y1);
 
-	x1 = max(b1x1, tx1);
-	y1 = max(b1y1, ty1);
-	x2 = min(b1x2, tx2);
-	y2 = min(b1y2, ty2);
+	// areas of billboards a and b respectively
+	area1 = (ax2 - ax1) * (ay2 - ay1);
+	area2 = (bx2 - bx1) * (by2 - by1);
+
+	// intersection between a and th truck
+	x1 = max(ax1, tx1);
+	y1 = max(ay1, ty1);
+	x2 = min(ax2, tx2);
+	y2 = min(ay2, ty2);
 	area1 -= (x2 - x1) * (y2 - y1);
-	
-	x1 = max(b2x1, tx1);
-	y1 = max(b2y1, ty1);
-	x2 = min(b2x2, tx2);
-	y2 = min(b2y2, ty2);
+
+	// intersection between b and th truck
+	x1 = max(bx1, tx1);
+	y1 = max(by1, ty1);
+	x2 = min(bx2, tx2);
+	y2 = min(by2, ty2);
+
+	// the remain_visible area
 	area2 -= (x2 - x1) * (y2 - y1);
 	
 	cout << area1 + area2 << "\n";
